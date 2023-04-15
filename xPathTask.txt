@@ -1,0 +1,27 @@
+//body//a/img[@title="Спартак"]
+//body//a/img[@alt="логотип Спартак"]
+
+//body//div[@class="content_menu"]//a/span[text()='Информация для партнеров']
+
+//div[@class="content_menu"]//a[text()='Импрессо']
+//a[text()='Импрессо'][1]
+
+//i[@class="search fa search-btn lupa"]
+//i[contains(@class, 'lupa')]
+
+//span[@class="header__eye"]//img
+//img[@src="/include/eye.svg"]
+
+//a[@class='header__lang__item header__lang__item_ru active']
+
+//a[@href='/cn/']
+
+//a[@class='download-catalog']
+
+//a[@class='flex-next']
+
+//img[@src='/bitrix/templates/our_shop/images/VK.svg']
+
+//img[@src='/bitrix/templates/our_shop/images/youtube.svg']
+
+//li/a[text()='2']

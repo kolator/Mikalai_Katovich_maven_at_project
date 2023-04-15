@@ -1,0 +1,19 @@
+//a[contains(@href,'mail.ru') and text()='Mail.ru']
+
+//a[@class='ph-project svelte-jq5qv5' and contains(@href,'mail.ru') and text()='Облако']
+
+//a[contains(@href,'//account.mail.ru/signup')]
+
+//button[contains(@class, 'ph-login')]
+
+//button[text()='Войти']
+
+//button[@class='search-arrow__button' and @type='submit']
+
+//a[@class='tabs__item qdcpbjo__xze716' and @href='//lady.mail.ru/']
+
+//lady.mail.ru
+
+//a[@class='news-item-link qdcpbjo__96um9r']
+
+//a[@data-testid='mailbox-create-link']
