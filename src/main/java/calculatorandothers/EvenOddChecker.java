@@ -1,3 +1,5 @@
+package calculatorandothers;
+
 public class EvenOddChecker {
 
     public static boolean check(int num) {

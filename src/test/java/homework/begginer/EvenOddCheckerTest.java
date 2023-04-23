@@ -1,11 +1,10 @@
-/*
-package homework.starttests;
+package homework.begginer;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 public class EvenOddCheckerTest {
-    EvenOddChecker checker = new EvenOddChecker();
+    calculatorandothers.EvenOddChecker checker = new calculatorandothers.EvenOddChecker();
 
     @Test
     public void testEvenNumber() {
@@ -32,4 +31,3 @@ public class EvenOddCheckerTest {
         Assert.assertFalse(checker.check(-1));
     }
 }
-*/

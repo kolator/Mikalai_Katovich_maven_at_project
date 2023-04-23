@@ -1,4 +1,4 @@
-package homework;
+package homework.begginer;
 
 public class ClassworkTest2 {
 }

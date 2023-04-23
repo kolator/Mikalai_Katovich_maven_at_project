@@ -1,9 +1,8 @@
-/*
-package homework;
+package homework.begginer;
 
 import org.junit.Assert;
 import org.junit.Test;
-
+import calculatorandothers.Calculator;
 
 public class CalculatorTest {
     Calculator calculator = new Calculator();
@@ -33,4 +32,3 @@ public class CalculatorTest {
         calculator.divide(2, 0);
     }
 }
-*/
