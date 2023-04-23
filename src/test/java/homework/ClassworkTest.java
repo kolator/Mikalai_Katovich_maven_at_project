@@ -1,4 +1,4 @@
-package homework.starttests;
+package homework;
 
 public class ClassworkTest {
 }

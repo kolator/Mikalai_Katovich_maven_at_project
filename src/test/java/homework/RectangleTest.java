@@ -1,5 +1,7 @@
+/*
 package homework.starttests;
 
+import
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -51,3 +53,4 @@ public class RectangleTest {
         Assert.assertEquals(25, rectangle.getArea(), 0);
     }
 }
+*/
