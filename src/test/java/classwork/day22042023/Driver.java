@@ -1,4 +1,4 @@
-package day22042023;
+package classwork.day22042023;
 
 import org.openqa.selenium.WebDriver;
 import java.util.concurrent.TimeUnit;

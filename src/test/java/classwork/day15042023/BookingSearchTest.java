@@ -1,4 +1,4 @@
-package day15042023;
+package classwork.day15042023;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
