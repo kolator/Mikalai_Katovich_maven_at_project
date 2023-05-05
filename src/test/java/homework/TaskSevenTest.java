@@ -11,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 public class TaskSevenTest {
     private WebDriver driver;
     private WebDriverWait wait;
@@ -22,7 +24,8 @@ public class TaskSevenTest {
         // Создание экземпляра драйвера Chrome
         driver = new ChromeDriver();
         // Создание объекта WebDriverWait с таймаутом 10 секунд
-        wait = new WebDriverWait(driver, 10);
+        Duration timeout = Duration.ofSeconds(10);
+        wait = new WebDriverWait(driver, timeout);
         // Переход на страницу https://booking.com
         driver.get("https://booking.com");
     }

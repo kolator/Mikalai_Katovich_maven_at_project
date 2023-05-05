@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
+import java.util.List;
 
 public class TaskOneTest {
     public static void main(String[] args) {
@@ -36,13 +36,11 @@ public class TaskOneTest {
         LocalDate checkinDate = LocalDate.now().plusDays(3);
         LocalDate checkoutDate = checkinDate.plusDays(7);
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
         driver.findElement(By.xpath(String.format("//span[@data-date='%s']", checkinDate.format(dateFormat)))).click();
         driver.findElement(By.xpath(String.format("//span[@data-date='%s']", checkoutDate.format(dateFormat)))).click();
 
         //номера + люди
         driver.findElement(By.xpath("//*[@data-testid='occupancy-config']")).click();
-
         WebElement clickElement = driver.findElement(By.xpath("//*[@id='group_adults']/following-sibling::div/button[2]"));
         clickElement.click();
         clickElement.click();
@@ -51,31 +49,32 @@ public class TaskOneTest {
         //сабмит
         driver.findElement(By.xpath("//*[@type='submit']")).click();
 
+        // чекбокс на максимальную стоимость
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        List<WebElement> buttons = driver.findElements(By.xpath("//*[@id=':R2hn8cq:']"));
+        if (!buttons.isEmpty()) {
+            buttons.get(0).click();
+        }
+        // ползунок на максимальную стоимость
+        List<WebElement> rangeInput = driver.findElements(By.xpath("//*[contains(@id,'filter_group_price_')]//input[@type=\"range\"]"));
+        if (!rangeInput.isEmpty()) {
+            Actions move = new Actions(driver);
+            move.dragAndDropBy(rangeInput.get(0), 45, 0).perform();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.attributeToBe(rangeInput.get(0), "value", "1600"));
+        }
 
-        // Фильтруем по максимальной стоимости и сортируем по возрастанию цены
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-//        WebElement priceButton = driver.findElement(By.xpath("//*[@id=':R2hn8cq:']"));
-//        priceButton.click();
-
-        // если ползунок
-        WebElement rangeInput = driver.findElement(By.xpath("//*[contains(@id,'filter_group_price_')]//input[@type=\"range\"]"));
-        Actions move = new Actions(driver);
-        move.dragAndDropBy(rangeInput, 100, 0).perform();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.attributeToBe(rangeInput, "value", "25"));
-
-
+        // ловер прайс в топ
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.findElement(By.xpath("//button[@data-testid='sorters-dropdown-trigger']")).click();
         driver.findElement(By.xpath("//span[text()='Price (lowest first)']")).click();
 
-
-
-        WebElement cheapestHotelPriceElement = driver.findElement(By.xpath("(//*[@class='bui-price-display__value prco-text-nowrap-helper prco-inline-block-maker-helper'])[1]"));
-        String cheapestHotelPrice = cheapestHotelPriceElement.getText().replaceAll("[^\\d.]+", "");
+        // делаем из текста верхнего прайса число
+        List<WebElement> cheapestHotelPriceElement = driver.findElements(By.xpath("//span[@data-testid='price-and-discounted-price']"));
+        String cheapestHotelPrice = cheapestHotelPriceElement.get(0).getText().replaceAll("[^\\d.]+", "");
         double cheapestPrice = Double.parseDouble(cheapestHotelPrice);
 
-// проверяем, что стоимость ночи самого дешевого отеля на странице больше или равна 1600 злотых
+        // проверяем стоимость с 1600
         double maxPrice = 1600.0;
         if (cheapestPrice >= maxPrice) {
             System.out.println("Success!");
@@ -84,6 +83,5 @@ public class TaskOneTest {
         }
 
         driver.quit();
-
     }
 }

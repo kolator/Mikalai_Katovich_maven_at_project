@@ -6,38 +6,47 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import java.time.Duration;
+
 public class TaskTwoTest {
     public static void main(String[] args) throws InterruptedException {
 
         WebDriver driver = new ChromeDriver();
 
-        // Открываем браузер и переходим на сайт w3schools.com
+        // Открываем браузер и переходим w3schools.com
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
         driver.get("https://www.w3schools.com/java/");
+        driver.findElement(By.xpath("//*[@id=\"accept-choices\"]")).click();
 
-        // Двойным кликом выделяем слово "Tutorial" в заголовке страницы
+        //открываем менюшку
+        driver.findElement(By.xpath("//*[@id=\"navbtn_tutorials\"]")).click();
+
+        // выделяем  "Tutorial"
         Actions actions = new Actions(driver);
-        actions.moveToElement(driver.findElement(By.xpath("//h1[contains(text(),'Java Tutorial')]")))
+        actions.moveToElement(driver.findElement(By.xpath("//*[@id=\"nav_tutorials\"]//h2/b")))
                 .doubleClick()
                 .build()
                 .perform();
 
-        // Копируем текст в буфер обмена
+        // контрл + Ц
         actions.keyDown(Keys.CONTROL).sendKeys("c").keyUp(Keys.CONTROL).build().perform();
 
-        // Переходим на страницу google.com
+        // Переходим google.com
         driver.get("https://www.google.com");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
+        driver.findElement(By.xpath("//button[@id='L2AGLb']")).click();
 
-        // Вставляем скопированный текст в поле поиска и запускаем поиск
+        // контрл В + поиск
         driver.findElement(By.name("q")).sendKeys(Keys.CONTROL + "v");
         driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
-
-        // Ожидаем загрузки страницы с результатами
-        Thread.sleep(3000);
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
 
         // Проверяем, что каждый результат содержит слово "Tutorial"
         boolean isWordPresent = true;
-        String searchTerm = "Tutorial";
+        String searchTerm = "Tutorials";
         for (int i = 1; i <= 10; i++) {
             String resultText = driver.findElement(By.xpath("//div[@class='g'][" + i + "]"))
                     .getText()
@@ -48,12 +57,12 @@ public class TaskTwoTest {
             }
         }
         if (isWordPresent) {
-            System.out.println("Каждый из результатов содержит искомое слово: " + searchTerm);
+            System.out.println("Каждый из результатов содержит: " + searchTerm);
         } else {
-            System.out.println("Не каждый из результатов содержит искомое слово: " + searchTerm);
+            System.out.println("Есть результаты без: " + searchTerm);
         }
 
-        // Закрываем браузер
-        driver.quit();
+        // Закрываем
+        //        driver.quit();
     }
 }

@@ -2,36 +2,37 @@ package homework;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import java.time.Duration;
 
 public class TaskThreeTest {
     public static void main(String[] args) throws InterruptedException {
 
-        ChromeDriver driver = new ChromeDriver();
+        WebDriver driver = new ChromeDriver();
 
-        // Переходим на сайт booking.com
         driver.manage().window().maximize();
-        driver.get("https://www.booking.com");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
+        driver.get("https://www.booking.com/");
+        driver.findElement(By.xpath("//*[@id='onetrust-accept-btn-handler']")).click();
 
-        // Находим поле для ввода города и вводим "Москва"
+        // вводим Zakopane
         WebElement cityField = driver.findElement(By.name("ss"));
-        cityField.sendKeys("Москва");
+        cityField.sendKeys("Zakopane");
 
-        // Находим кнопку поиска и кликаем на нее
-        WebElement searchButton = driver.findElement(By.cssSelector("button[type='submit']"));
-        searchButton.click();
-
-        // Ждем, пока страница загрузится и отобразятся результаты поиска
-        Thread.sleep(5000);
+        // сабмит
+        driver.findElement(By.xpath("//*[@type='submit']")).click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         // Прокручиваем страницу к 10-му отелю
-        WebElement hotel = driver.findElement(By.xpath("//div[@id='hotellist_inner']/div[10]"));
+        WebElement hotelTen = driver.findElement(By.xpath("(//*[@data-testid=\"property-card\"])[10]"));
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("arguments[0].scrollIntoView()", hotel);
+        jse.executeScript("arguments[0].scrollIntoView()", hotelTen);
 
         // Находим заголовок 10-го отеля
-        WebElement hotelTitle = driver.findElement(By.xpath("//div[@id='hotellist_inner']/div[10]//h3[@class='sr-hotel__title']"));
+        WebElement hotelTitle = driver.findElement(By.xpath("(//*[@data-testid=\"title\"])[10]"));
 
         // Меняем цвет фона на зеленый
         jse.executeScript("arguments[0].style.backgroundColor = 'green'", hotelTitle);
@@ -47,7 +48,7 @@ public class TaskThreeTest {
             System.out.println("Заголовок отеля не красного цвета");
         }
 
-        // Закрываем браузер
+        //Закрываем
         driver.quit();
     }
 }
