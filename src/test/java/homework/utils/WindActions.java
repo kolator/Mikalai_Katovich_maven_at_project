@@ -1,10 +1,10 @@
-package homework.objects;
+package homework.utils;
 
 import homework.driver.Driver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
-public class MyActions {
+public class WindActions {
     WebDriver driver = Driver.getWebDriver();
     Actions make = new Actions(driver);
     public void ctrlC(WebElement webElement) {
