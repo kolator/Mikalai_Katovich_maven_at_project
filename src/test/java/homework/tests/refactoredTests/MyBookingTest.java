@@ -1,4 +1,4 @@
-package homework.tests;
+package homework.tests.refactoredTests;
 
         import org.openqa.selenium.By;
         import org.openqa.selenium.WebDriver;
