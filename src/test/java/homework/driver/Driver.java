@@ -10,8 +10,8 @@ public class Driver {
 
     public static Config config;
 
-    public static void setConfig(Config theConfig) {
-        config = null == theConfig ? Config.valueOf(System.getProperty("CONFIG")) : theConfig;
+    public static void setConfig(Config config) {
+        config = null == config ? Config.valueOf(System.getProperty("CONFIG")) : config;
     }
 
     public static WebDriver getWebDriver() {

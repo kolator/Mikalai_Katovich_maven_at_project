@@ -27,5 +27,4 @@ public class DriverManager {
             case EDGE -> getEdgeDriver();
         };
     }
-
 }
