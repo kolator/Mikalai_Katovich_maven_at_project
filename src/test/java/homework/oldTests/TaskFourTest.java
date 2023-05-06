@@ -1,4 +1,4 @@
-package homework;
+package homework.oldTests;
 
 import org.junit.After;
 import org.junit.Before;

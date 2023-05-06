@@ -1,4 +1,4 @@
-package homework;
+package homework.oldTests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
