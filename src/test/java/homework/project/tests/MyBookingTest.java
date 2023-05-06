@@ -1,5 +1,8 @@
 package homework.project.tests;
 
+        import homework.project.driver.Driver;
+        import org.junit.After;
+        import org.junit.Before;
         import org.openqa.selenium.By;
         import org.openqa.selenium.WebDriver;
         import org.openqa.selenium.WebElement;
@@ -14,6 +17,15 @@ package homework.project.tests;
 
 public class MyBookingTest {
     public static void main(String[] args) {
+
+/*        @Before
+        public void beforeTests() {
+            Driver.getWebDriver();
+        }
+        @After
+        public void afterTests() {
+            Driver.closeDriver();
+        }*/
 
         WebDriver driver = new ChromeDriver();
 
