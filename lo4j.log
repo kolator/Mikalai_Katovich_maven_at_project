@@ -1,0 +1,12 @@
+14:00:11,214 FATAL main L4JLogging:main:11 - Сообщение с уровнем FATAL
+14:00:11,218 ERROR main L4JLogging:main:12 - Сообщение с уровнем ERROR
+14:00:11,218  WARN main L4JLogging:main:13 - Сообщение с уровнем WARNING
+14:00:11,219  INFO main L4JLogging:main:14 - Сообщение с уровнем INFO
+14:02:22,739 FATAL main L4JLogging:main:11 - Сообщение с уровнем FATAL
+14:02:22,743 ERROR main L4JLogging:main:12 - Сообщение с уровнем ERROR
+14:02:22,743  WARN main L4JLogging:main:13 - Сообщение с уровнем WARNING
+14:02:22,744  INFO main L4JLogging:main:14 - Сообщение с уровнем INFO
+14:03:41,092 FATAL main L4JLogging:main:11 - Сообщение с уровнем FATAL
+14:03:41,119 ERROR main L4JLogging:main:12 - Сообщение с уровнем ERROR
+14:03:41,119  WARN main L4JLogging:main:13 - Сообщение с уровнем WARNING
+14:03:41,119  INFO main L4JLogging:main:14 - Сообщение с уровнем INFO
