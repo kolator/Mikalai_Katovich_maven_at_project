@@ -3,4 +3,5 @@ parallel: classes
 tests:
   - name: Booking testing
     classes:
-      - tests.testng.RegisterLogin
+      #      - tests.testng.RegisterLogin
+      - tests.testng.DateTestSteps
